@@ -4,8 +4,11 @@ import {useEffect} from "react";
 import {loadTodos} from "./action";
 
 export const App = () => {
-     const todos = useSelector((state)=>state)
+     const todos = useSelector((state)=>state.todos)
+     const loading = useSelector((state)=>state.loading)
      const dispatch = useDispatch();
+
+
      useEffect(()=>{
          dispatch(loadTodos())
      },[])
@@ -16,11 +19,13 @@ export const App = () => {
     <div className="App">
           <>
               {
+                loading  ? ".....":(
                   todos.map((item)=>{
-                      return <>
-                          {item.title}
-                            </>
+                  return <>
+                    {item.title}
+                        </>
                   })
+                  )
               }
           </>
     </div>
