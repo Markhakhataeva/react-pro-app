@@ -6,32 +6,7 @@ import {applyMiddleware, createStore} from "redux";
 import {Provider} from "react-redux";
 import {thunk} from "redux-thunk";
 
-const initialState={todos:[
-        {
-            "userId": 1,
-            "id": 1,
-            "title": "delectus aut autem",
-            "completed": false
-        },
-        {
-            "userId": 1,
-            "id": 2,
-            "title": "quis ut nam facilis et officia qui",
-            "completed": false
-        },
-        {
-            "userId": 1,
-            "id": 3,
-            "title": "fugiat veniam minus",
-            "completed": false
-        },
-        {
-            "userId": 1,
-            "id": 4,
-            "title": "et porro tempora",
-            "completed": true
-        }
-    ],loading:false
+const initialState={photos:[],loading:false
 
 }
 const  reducer = (state=initialState, action) => {
@@ -43,13 +18,18 @@ const  reducer = (state=initialState, action) => {
             }
 
 
-        case "todos":
+        case "photos":
             return {
                 ...state,
-                todos:action.payload,
+                photos:action.payload,
                 loading:false
             }
 
+        case "removePhoto":
+            return {
+                ...state,
+                photos:state.photos.filter(photo => photo.id !== action.payload)
+            }
         default:return state
     }
 }
