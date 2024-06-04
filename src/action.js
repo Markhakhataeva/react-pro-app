@@ -3,27 +3,46 @@
 export const  loadTodos = (props) => {
     return (dispatch)=>{
         dispatch({type:"load"})
-        fetch("https://jsonplaceholder.typicode.com/photos/?_limit=30")
+        fetch("https://jsonplaceholder.typicode.com/todos")
             .then(res => res.json())
             .then((json)=>{
                 dispatch({
-                    type:'photos',
+                    type:'todos',
                     payload:json
                 })
             })
     };
 }
 
-export const removePhoto = (id) => {
+export const removeTodo = (id) => {
     return (dispatch)=>{
 
 
-        fetch(`https://jsonplaceholder.typicode.com/photos/${id}`,{
+        fetch(`https://jsonplaceholder.typicode.com/todos/${id}`,{
             method:'Delete'
         })
             .then((response)=>response.json())
-            .then((json)=>{
-                dispatch({type:"removePhoto",payload:id})
+            .then(()=>{
+                dispatch({type:"removeTodo",payload:id})
+            })
+
+    }
+}
+
+
+export const updateCheck = (id,completed) => {
+    return (dispatch)=>{
+        dispatch({type:"updateCheck"})
+
+        fetch(`https://jsonplaceholder.typicode.com/todos/${id}`,{
+            method:"PATCH",
+            body:JSON.stringify({
+                completed: !completed
+            })
+        })
+            .then(res => res.json())
+            .then(()=>{
+                dispatch({type:"updateCheck",payload:id})
             })
 
     }
