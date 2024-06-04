@@ -4,6 +4,7 @@ import {useEffect} from "react";
 import {loadTodos, removeTodo} from "./action";
 import {Header} from "./Header";
 import {updateCheck} from "./action";
+import ReactLoading from 'react-loading';
 
 export const App = () => {
      const photos = useSelector((state)=>state.todos)
@@ -32,7 +33,14 @@ export const App = () => {
                       return (
                           <div className="todo_wrapper">
                               <div className="checkbox">
-                                  <input type="checkbox" checked={item.completed} onChange={()=>handleChecked(item.id,item.completed)}/>
+                                  {
+                                      item.checking ? <ReactLoading color="#126fcf" type="spin" width={30} height={30} /> : (
+                                          <input
+                                              type="checkbox"
+                                              checked={item.completed}
+                                              onChange={()=>handleChecked(item.id,item.completed)}/>
+                                      )
+                                  }
                               </div>
                               <div className="todo">
                                   {item.title}
