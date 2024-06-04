@@ -16,6 +16,7 @@ export const  loadTodos = (props) => {
 
 export const removeTodo = (id) => {
     return (dispatch)=>{
+        dispatch({type:"removeT", payload:id})
 
 
         fetch(`https://jsonplaceholder.typicode.com/todos/${id}`,{

@@ -25,6 +25,19 @@ const  reducer = (state=initialState, action) => {
                 loading:false
             }
 
+        case "removeT":
+            return {
+                ...state,
+                todos:state.todos.map(todo=>{
+                    if(todo.id === action.payload){
+                        return{
+                            ...todo,
+                            deleting:true
+                        }
+                    }
+                    return todo;
+                })
+            }
         case "removeTodo":
             return {
                 ...state,

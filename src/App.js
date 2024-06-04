@@ -38,7 +38,9 @@ export const App = () => {
                                   {item.title}
                               </div>
                               <div className="button">
-                                  <button onClick={() => handleDelete(item.id)}>Удалить</button>
+                                  <button onClick={() => handleDelete(item.id)}
+                                  disabled={item.deleting}
+                                  >Удалить</button>
                               </div>
 
                           </div>
