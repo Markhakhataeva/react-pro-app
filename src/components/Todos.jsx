@@ -4,6 +4,8 @@ import {Todo} from "./Todo";
 
 export const Todos = ({handleChecked,handleDelete}) => {
     const todos = useSelector((state)=>state.todos)
+    const users = useSelector((state)=>state.users)
+
 
 
     return (
@@ -11,9 +13,9 @@ export const Todos = ({handleChecked,handleDelete}) => {
             {
                 (
                     todos.map((item)=>{
-                        return <Todo id={item.id} handleDelete={handleDelete} handleChecked={handleChecked}
+                        return <Todo id={item.id} key={item.id} handleDelete={handleDelete} handleChecked={handleChecked}
                         completed={item.completed} checking={item.checking}
-                        deleting={item.deleting} title={item.title} />
+                        deleting={item.deleting} title={item.title} userId={item.userId} users={users}/>
                     }
                     ))
             }

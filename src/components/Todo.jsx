@@ -2,7 +2,10 @@ import React from 'react';
 import ReactLoading from "react-loading";
 import Button from "./Button";
 
-export const Todo=({handleChecked,handleDelete,checking,completed,id,deleting,title})=> {
+export const Todo=({handleChecked,handleDelete,checking,completed,id,deleting,title,userId,users})=> {
+
+    const user=users.filter((user)=>user.id === userId)
+
     return (
         <>
             {
@@ -20,6 +23,10 @@ export const Todo=({handleChecked,handleDelete,checking,completed,id,deleting,ti
                         </div>
                         <div className="todo">
                             {title}
+                            <br/>
+                           <b>
+                               (email:{user[0]?.email})
+                           </b>
                         </div>
                         <Button  handleDelete={handleDelete} deleting={deleting} id={id}/>
 

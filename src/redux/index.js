@@ -1,7 +1,9 @@
 import {applyMiddleware, createStore} from "redux";
 import {thunk} from "redux-thunk";
 
-const initialState={todos:[],loading:false
+const initialState={todos:[],loading:false,
+    users:[],
+    loadUser:false
 
 }
 const  reducer = (state=initialState, action) => {
@@ -38,7 +40,7 @@ const  reducer = (state=initialState, action) => {
                 ...state,
                 todos:state.todos.filter(todo => todo.id !== action.payload)
             }
-        default:return state
+
 
         case "updateChecked":
             return {
@@ -67,6 +69,22 @@ const  reducer = (state=initialState, action) => {
                     return todo
                 })
             }
+
+            case "load/user/start":
+                return {
+                    ...state,
+                    loadUser:true
+                }
+
+
+        case "load/user/fulfilled":
+            return {
+                ...state,
+                users:action.payload,
+                loadUser:false
+            }
+
+        default:return state
     }
 }
 
