@@ -1,15 +1,16 @@
 
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {loadTodos, loadUsers, removeTodo} from "./action";
 import {Header} from "./Header";
 import {updateCheck} from "./action";
 import {Todos} from "./components/Todos";
+import ReactLoading from "react-loading";
 
 export const App = () => {
      const loading = useSelector((state)=>state.loading)
      const dispatch = useDispatch();
-
+     const loadUser = useSelector((state)=>state.loadUser)
 
      useEffect(()=>{
          dispatch(loadTodos())
@@ -28,7 +29,7 @@ export const App = () => {
     <div className="App">
           <Header />
               {
-                loading  ? ".....":
+                loading || loadUser ? <ReactLoading color="#126fcf" type="spin" width={30} height={30} /> :
                     <Todos handleChecked={handleChecked} handleDelete={handleDelete}/>
 
               }
