@@ -1,10 +1,16 @@
 import React from 'react';
-import {useSelector} from "react-redux";
 import {Todo} from "./Todo";
+import {useTypedSelector} from "../hooks";
 
-export const Todos = ({handleChecked,handleDelete}) => {
-    const todos = useSelector((state)=>state.todos)
-    const users = useSelector((state)=>state.users)
+interface TodosProps{
+    handleDelete:(id:number) => void
+    handleChecked:(id:number,completed:boolean) => void
+}
+
+
+export const Todos:React.FC<TodosProps> = ({handleChecked,handleDelete}) => {
+    const todos = useTypedSelector((state)=>state.todos)
+    const users = useTypedSelector((state)=>state.users)
 
 
 

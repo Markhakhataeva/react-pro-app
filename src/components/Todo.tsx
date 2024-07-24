@@ -1,10 +1,22 @@
 import React from 'react';
-import ReactLoading from "react-loading";
-import Button from "./Button";
+import {Button} from "./Button";
 
-export const Todo=({handleChecked,handleDelete,checking,completed,id,deleting,title,userId,users})=> {
+interface TodoProps{
+    handleDelete:(id:number) => void
+    handleChecked:(id:number,completed:boolean) => void
+    checking:boolean,
+    completed:boolean,
+    id:number,
+    deleting:boolean,
+    title:string,
+    userId:number,
+    users:any[]
+}
 
-    const user=users.find((user)=>user.id === userId)
+export const Todo:React.FC<TodoProps> = ({handleChecked,
+                                             handleDelete,checking,completed,id,deleting,title,userId,users}) => {
+
+    const user = users.find((user)=>user.id === userId)
 
     return (
         <>
@@ -13,7 +25,7 @@ export const Todo=({handleChecked,handleDelete,checking,completed,id,deleting,ti
                     <div className="todo_wrapper">
                         <div className="checkbox">
                             {
-                                checking ? <ReactLoading color="#126fcf" type="spin" width={30} height={30} /> : (
+                               (
                                     <input
                                         type="checkbox"
                                         checked={completed}

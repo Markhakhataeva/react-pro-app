@@ -1,6 +1,13 @@
 import React from 'react';
 
-function Button({handleDelete,deleting,id}) {
+interface ButtonProps{
+    handleDelete:(id:number) => void,
+    deleting:boolean,
+    id:number
+
+}
+
+export const Button:React.FC<ButtonProps> = ({handleDelete,deleting,id}) => {
     return (
         <>
             {
@@ -15,4 +22,3 @@ function Button({handleDelete,deleting,id}) {
     );
 }
 
-export default Button;

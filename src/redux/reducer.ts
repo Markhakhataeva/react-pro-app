@@ -1,28 +1,31 @@
-import {applyMiddleware, createStore} from "redux";
-import {thunk} from "redux-thunk";
+import {ActionType, FetchTODOS_Actions, ReduxState} from "../types";
 
-const initialState={todos:[],loading:false,
+
+const initialState:ReduxState={
+    todos:[],
+    loading:false,
     users:[],
     loadUser:false
 
 }
-const  reducer = (state=initialState, action) => {
+
+export const reducer = (state=initialState, action:FetchTODOS_Actions) => {
     switch(action.type) {
-        case "load":
+        case ActionType.FETCH_TODOS:
             return {
                 ...state,
                 loading:true
             }
 
 
-        case "todos":
+        case ActionType.FETCH_TODOS_SUCCESS:
             return {
                 ...state,
                 todos:action.payload,
                 loading:false
             }
 
-        case "removeT":
+        case ActionType.FETCH_DELETE:
             return {
                 ...state,
                 todos:state.todos.map(todo=>{
@@ -35,14 +38,14 @@ const  reducer = (state=initialState, action) => {
                     return todo;
                 })
             }
-        case "removeTodo":
+        case  ActionType.FETCH_TODOS_DELETE:
             return {
                 ...state,
                 todos:state.todos.filter(todo => todo.id !== action.payload)
             }
 
 
-        case "updateChecked":
+        case ActionType.FETCH_CHECK:
             return {
                 ...state,
                 todos:state.todos.map(todo=>{
@@ -55,7 +58,7 @@ const  reducer = (state=initialState, action) => {
                     return todo;
                 })
             }
-        case "updateCheck":
+        case  ActionType.FETCH_CHECK_SUCCESS:
             return {
                 ...state,
                 todos: state.todos.map(todo=>{
@@ -70,14 +73,14 @@ const  reducer = (state=initialState, action) => {
                 })
             }
 
-            case "load/user/start":
+            case ActionType.FETCH_USER:
                 return {
                     ...state,
                     loadUser:true
                 }
 
 
-        case "load/user/fulfilled":
+        case ActionType.FETCH_USER_SUCCESS:
             return {
                 ...state,
                 users:action.payload,
@@ -87,5 +90,3 @@ const  reducer = (state=initialState, action) => {
         default:return state
     }
 }
-
-export const store = createStore(reducer,applyMiddleware(thunk));
