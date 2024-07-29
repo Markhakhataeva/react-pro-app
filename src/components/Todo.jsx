@@ -2,9 +2,9 @@ import React from 'react';
 import ReactLoading from "react-loading";
 import Button from "./Button";
 
-export const Todo=({handleChecked,handleDelete,checking,completed,id,deleting,title,userId,users})=> {
+export const Todo = ({handleChecked,handleDelete,checking,completed,id,deleting,title,userId,users})=> {
 
-    const user=users.find((user)=>user.id === userId)
+    const users2 = users.find((user)=> user.id === userId)
 
     return (
         <>
@@ -25,7 +25,7 @@ export const Todo=({handleChecked,handleDelete,checking,completed,id,deleting,ti
                             {title}
                             <br/>
                            <b>
-                               (email:{user.email})
+                               (email:{users2.email})
                            </b>
                         </div>
                         <Button  handleDelete={handleDelete} deleting={deleting} id={id}/>

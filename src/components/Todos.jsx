@@ -3,8 +3,8 @@ import {useSelector} from "react-redux";
 import {Todo} from "./Todo";
 
 export const Todos = ({handleChecked,handleDelete}) => {
-    const todos = useSelector((state)=>state.todos)
-    const users = useSelector((state)=>state.users)
+    const todos = useSelector((state)=>state.todos.todos)
+    const users = useSelector((state)=>state.users.users)
 
 
 
