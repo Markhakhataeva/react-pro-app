@@ -13,8 +13,7 @@ interface TodoProps{
     users:any[]
 }
 
-export const Todo:React.FC<TodoProps> = ({handleChecked,
-                                             handleDelete,checking,completed,id,deleting,title,userId,users}) => {
+export const Todo:React.FC<TodoProps> = ({handleChecked, handleDelete,checking,completed,id,deleting,title,userId,users}) => {
 
     const user = users.find((user)=>user.id === userId)
 
