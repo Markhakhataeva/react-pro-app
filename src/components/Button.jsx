@@ -6,8 +6,8 @@ function Button({handleDelete,deleting,id}) {
             {
                 <div className="button">
                     <button onClick={() => handleDelete(id)}
-                            disabled={deleting}
-                    >Удалить
+                            disabled={deleting}>
+                        Удалить
                     </button>
                 </div>
             }

@@ -11,8 +11,7 @@ export const loadUsers = createAsyncThunk(
     "load/user/start",
     async ()=>{
         const response = await         fetch("https://jsonplaceholder.typicode.com/users")
-        const data = response.json()
-        return data
+        return response.json()
     }
 )
 

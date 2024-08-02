@@ -4,7 +4,6 @@ import Button from "./Button";
 
 export const Todo = ({handleChecked,handleDelete,checking,completed,id,deleting,title,userId,users})=> {
 
-    const users2 = users.find((user)=> user.id === userId)
 
     return (
         <>
@@ -25,7 +24,7 @@ export const Todo = ({handleChecked,handleDelete,checking,completed,id,deleting,
                             {title}
                             <br/>
                            <b>
-                               (email:{users2.email})
+
                            </b>
                         </div>
                         <Button  handleDelete={handleDelete} deleting={deleting} id={id}/>
