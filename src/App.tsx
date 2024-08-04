@@ -1,6 +1,6 @@
 import {useTypedSelector} from "./hooks"
 import React, {useEffect} from "react";
-import {Header} from "./Header";
+import {Header} from "./components/Header";
 import {Todos} from "./components/Todos";
 import ReactLoading from "react-loading";
 import {useActions} from "./hooks/useActions";

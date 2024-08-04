@@ -1,0 +1,15 @@
+
+.todo_wrapper{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 30px;
+  border: 1px solid lightgray;
+  align-items: center;
+}
+.todo{
+  flex: 1;
+  margin-left: 20px;
+  padding: 10px;
+}
+

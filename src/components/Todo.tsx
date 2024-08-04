@@ -1,5 +1,7 @@
 import React from 'react';
 import {Button} from "./Button";
+import styles from "../styles/todos.module.scss"
+
 
 interface TodoProps{
     handleDelete:(id:number) => void
@@ -21,7 +23,7 @@ export const Todo:React.FC<TodoProps> = ({handleChecked, handleDelete,checking,c
         <>
             {
                 (
-                    <div className="todo_wrapper">
+                    <div className={styles.todo_wrapper}>
                         <div className="checkbox">
                             {
                                (
@@ -32,7 +34,7 @@ export const Todo:React.FC<TodoProps> = ({handleChecked, handleDelete,checking,c
                                 )
                             }
                         </div>
-                        <div className="todo">
+                        <div className={styles.todo}>
                             {title}
                             <br/>
                            <b>
