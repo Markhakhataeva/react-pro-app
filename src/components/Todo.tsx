@@ -1,8 +1,18 @@
-import React from 'react';
+import React, {FC} from 'react';
 import ReactLoading from "react-loading";
-import Button from "./Button";
+import {Button} from "./Button";
 
-export const Todo = ({handleChecked,handleDelete,checking,completed,id,deleting,title,userId,users})=> {
+interface TodoProps{
+    handleChecked:(id:number,completed:boolean) => void,
+    handleDelete:(id:number) => void,
+    checking:boolean,
+    completed:boolean,
+    deleting?:boolean,
+    id:number,
+    title:string
+
+}
+export const Todo:FC<TodoProps> = ({handleChecked,handleDelete,checking,completed,id,deleting,title}:TodoProps)=> {
 
 
     return (
@@ -23,9 +33,6 @@ export const Todo = ({handleChecked,handleDelete,checking,completed,id,deleting,
                         <div className="todo">
                             {title}
                             <br/>
-                           <b>
-
-                           </b>
                         </div>
                         <Button  handleDelete={handleDelete} deleting={deleting} id={id}/>
 

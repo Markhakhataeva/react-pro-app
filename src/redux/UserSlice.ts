@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import {UsProps} from "../ttypes";
 
-const initialState = {
+const initialState:UsProps = {
     users:[],
     loadingUser:false
 
@@ -25,7 +26,7 @@ export const userSlice = createSlice({
     extraReducers:(builder) => {
         builder
             .addCase(loadUsers.pending, (state, action) => {
-                state.loadUser = true;
+                state.loadingUser = true;
             })
             .addCase(loadUsers.fulfilled, (state, action) => {
                 state.loadingUser = false

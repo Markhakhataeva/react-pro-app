@@ -1,36 +1,46 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import {TodosTypes} from "../ttypes";
 
-const initialState = {
+const initialState:TodosTypes = {
     todos:[],
     loading:false,
 
 }
-
-
-export const loadTodos = createAsyncThunk(
+interface removeID{
+    id:number,
+    meta?:object
+}
+interface check{
+    id:number,
+    completed:boolean
+}
+export let loadTodos = createAsyncThunk(
     "load/load/todos",
-    async ()=>{
+    async () => {
         const response = await  fetch("https://jsonplaceholder.typicode.com/todos")
+        return await response.json()
 
-        return response.json()
     }
 )
 
 
 export const removeTodo = createAsyncThunk(
     "delete/todo/start",
-    async ({id})=>{
+    async ({id}:removeID)=>{
         const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
                 method: "DELETE"
             })
-        return response.json()
+        const data = response.json()
+        return{
+            data,id
+        }
     }
 )
 
 
 export const updateCheck = createAsyncThunk(
     "load/user/start",
-    async ({id,completed})=>{
+    async ({id,completed}:check)=>{
         const response = await         fetch(`https://jsonplaceholder.typicode.com/todos/${id}`,{
             method:"PATCH",
             body:JSON.stringify({
